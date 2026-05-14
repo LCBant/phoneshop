@@ -3,6 +3,6 @@
 namespace App\Enum;
 
 enum ProductType: string {
-    case Product = 'product';
+    case Phone = 'phone';
     case Accessory = 'accessory';
 }
