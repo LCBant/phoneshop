@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Phones | Phoneshop{% endblock %}
+
+{% block body %}
+<div class="container">
+<h2>All accessories</h2>
+<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+{% for accessory in accessories %}
+<div class="col">
+<div class="card h-100">
+  <img src="{{ asset('images/' ~ accessory.image) }}" class="card-img-top mt-2" style="height: 200px; object-fit: contain;" alt="no-photo">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title" style="min-height: 2rem;">{{ accessory.name }}</h5>
+    <p class="card-text" style="min-height: 3rem;">{{ accessory.description | slice(0, 80) ~ '...' }}</p>
+    <p class="card-text fw-bold">€{{ accessory.price }}</p>
+    <a href="#" class="btn btn-primary w-100 fw-bold mt-auto">View Product</a>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
