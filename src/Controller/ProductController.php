@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Enum\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+# use slug instead of id
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 final class ProductController extends AbstractController
 {
@@ -31,4 +34,15 @@ final class ProductController extends AbstractController
             'accessories' => $accessories
         ]);
     }
+
+    # details route with slug instead of id
+    #[Route('/product/{slug}', name: 'app_product_detail')]
+    public function phonedetail(#[MapEntity(mapping: ['slug' => 'slug'])] Product $product): Response
+    {
+        return $this->render('product/productdetail.html.twig', [
+            'controller_name' => 'ProductController',
+            'product' => $product
+        ]);
+    }
+
 }

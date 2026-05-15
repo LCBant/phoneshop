@@ -3,11 +3,14 @@
 {% block title %}Home | Phoneshop{% endblock %}
 
 {% block body %}
-<div class="container-fluid mt-3">
+<div class="container mt-3">
     <h1 class="text-center">Welcome to my webshop!</h1>
+    <p class="text-center">A webshop made by Leannan Bant.</p>
+    <img class="img-fluid" src="{{ asset('images/banner-home.jpeg') }}" alt="no-bg">
 </div>
 <div class="container">
 <h2>Featured Products</h2>
+<hr>
 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
 {% for product in featuredProducts %}
 <div class="col">
@@ -17,7 +20,7 @@
     <h5 class="card-title" style="min-height: 2rem;">{{ product.name }}</h5>
     <p class="card-text" style="min-height: 3rem;">{{ product.description | slice(0, 80) ~ '...' }}</p>
     <p class="card-text fw-bold">€{{ product.price }}</p>
-    <a href="#" class="btn btn-primary w-100 fw-bold mt-auto">View Product</a>
+    <a href="{{ path('app_product_detail', {slug: product.slug}) }}" class="btn btn-primary w-100 fw-bold mt-auto">View Product</a>
   </div>
 </div>
 </div>

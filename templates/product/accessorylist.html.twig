@@ -14,7 +14,7 @@
     <h5 class="card-title" style="min-height: 2rem;">{{ accessory.name }}</h5>
     <p class="card-text" style="min-height: 3rem;">{{ accessory.description | slice(0, 80) ~ '...' }}</p>
     <p class="card-text fw-bold">€{{ accessory.price }}</p>
-    <a href="#" class="btn btn-primary w-100 fw-bold mt-auto">View Product</a>
+    <a href="{{ path('app_product_detail', {slug: accessory.slug}) }}" class="btn btn-primary w-100 fw-bold mt-auto">View Product</a>
   </div>
 </div>
 </div>
