@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Brand;
 use App\Entity\Product;
 use App\Enum\ProductType;
 use App\Repository\ProductRepository;
@@ -36,8 +37,8 @@ final class ProductController extends AbstractController
     }
 
     # details route with slug instead of id
-    #[Route('/product/{slug}', name: 'app_product_detail')]
-    public function phonedetail(#[MapEntity(mapping: ['slug' => 'slug'])] Product $product): Response
+    #[Route('/item/{slug}', name: 'app_product_detail')]
+    public function productdetail(#[MapEntity(mapping: ['slug' => 'slug'])] Product $product): Response
     {
         return $this->render('product/productdetail.html.twig', [
             'controller_name' => 'ProductController',
@@ -45,4 +46,14 @@ final class ProductController extends AbstractController
         ]);
     }
 
+    #[Route('/brands/{slug}', name: 'app_brand_detail')]
+    public function brandDetail(#[MapEntity(mapping: ['slug' => 'slug'])] Brand $brand, ProductRepository $productRepository): Response
+    {
+        $products = $productRepository->findBy(['brand' => $brand]);
+
+        return $this->render('product/branddetail.html.twig', [
+            'brand' => $brand,
+            'products' => $products
+        ]);
+    }
 }
