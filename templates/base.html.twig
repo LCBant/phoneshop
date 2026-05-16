@@ -38,7 +38,7 @@
                        <i class="bi bi-person-circle"></i> {{ app.user.firstName }} {{ app.user.lastName }}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ path("app_user_view_profile") }}"><i class="bi bi-person-fill"></i> Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-bag-fill"></i> Orders</a></li>
                         <li><a class="dropdown-item" href="{{ path("app_logout") }}"><i class="bi bi-door-closed-fill"></i> Logout</a></li>
                     </ul>
